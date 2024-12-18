@@ -1,6 +1,3 @@
-# Create a docker compose yml using the dockerfile named email-svc
-# and run the service on port 80
-
 services:
   email-svc:
     build:
