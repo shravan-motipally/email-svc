@@ -1,16 +1,11 @@
-# Let's create a fast api client that will take in requests to call the email client
-# in order to send emails.
-
-# First import the necessary libraries
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 from email_client import EmailWrapper
 
-# Create an instance of the FastAPI class
 app = FastAPI()
 
-# Define the request body model
+
 class EmailRequest(BaseModel):
     sender_email: str
     sender_name: str
@@ -24,9 +19,6 @@ class EmailRequest(BaseModel):
     reply_to_name: str
     subject: str
     html_content: str
-
-
-# Define the endpoint to send an email
 
 
 @app.post("/send_email")
@@ -52,12 +44,10 @@ def send_email(email_request: EmailRequest):
         return {"message": f"Error sending email: {str(e)}"}
 
 
-# Create a health check endpoint
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
 
 
-# Run the server
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=80)

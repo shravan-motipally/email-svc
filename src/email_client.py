@@ -5,7 +5,6 @@ import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 
-# Load the environment variables
 load_dotenv()
 
 
