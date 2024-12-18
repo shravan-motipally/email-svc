@@ -39,4 +39,3 @@ EXPOSE 80
 
 # Create entrypoint for src/main.py via python
 ENTRYPOINT ["python3", "src/main.py"]
-

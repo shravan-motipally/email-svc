@@ -25,7 +25,9 @@ class EmailRequest(BaseModel):
     subject: str
     html_content: str
 
+
 # Define the endpoint to send an email
+
 
 @app.post("/send_email")
 def send_email(email_request: EmailRequest):
@@ -42,7 +44,7 @@ def send_email(email_request: EmailRequest):
             bcc_name=email_request.bcc_name,
             reply_to_email=email_request.reply_to_email,
             reply_to_name=email_request.reply_to_name,
-            html_content=email_request.html_content
+            html_content=email_request.html_content,
         )
         email_wrapper.send_email(email_request.subject, email_request.html_content)
         return {"message": "Email sent successfully!"}
@@ -54,6 +56,7 @@ def send_email(email_request: EmailRequest):
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
 
 # Run the server
 if __name__ == "__main__":
